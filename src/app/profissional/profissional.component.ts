@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
-import { Profissional } from 'src/app/model/profissional';
+import { ApiService } from '../../service/api.service';
+import { Profissional } from 'src/model/profissional';
 
 @Component({
   selector: 'app-profissional',
@@ -9,7 +9,7 @@ import { Profissional } from 'src/app/model/profissional';
 })
 export class ProfissionalComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'endereco', 'telefones'];
+  displayedColumns: string[] = ['nome', 'endereco', 'telefone'];
   dataSource: Profissional[];
   isLoadingResults: boolean;
 

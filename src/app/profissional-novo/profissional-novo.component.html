@@ -1,3 +1,16 @@
-<p>
-    profissional-novo Ok!
-</p>
+<div>
+    <h3>Adicionar Novo Profissional</h3>
+</div>
+<form class="example-container" [formGroup]="profissionalForm" (ngSubmit)="addProfissional(profissionalForm.value)">
+    <mat-form-field>
+        <input matInput name="nome_profissional" placeholder="Nome do Profissional" formControlName="nome_profissional">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput name="endereco_profissional" placeholder="Endereço do Profissional" formControlName="endereco_profissional"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput name="telefone_profissional" placeholder="Telefone do Profissional" formControlName="telefone_profissional">
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!profissionalForm.valid" mat-button color="primary">Adicionar</button>
+</form>
