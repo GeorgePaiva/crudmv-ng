@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../service/api.service';
+import { Profissional } from 'src/app/model/profissional';
 
 @Component({
   selector: 'app-profissional',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfissionalComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['nome', 'endereco', 'telefones'];
+  dataSource: Profissional[];
+  isLoadingResults: boolean;
+
+  constructor(private _api: ApiService) { }
 
   ngOnInit() {
+    this._api.getProfissionais()
+    .subscribe(res => {
+      this.dataSource = res;
+      console.log(this.dataSource);
+      this.isLoadingResults = false;
+    }, err => {
+      console.log(err);
+      this.isLoadingResults = false;
+    });
   }
 
 }
