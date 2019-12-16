@@ -18,7 +18,7 @@ export class ProfissionalNovoComponent implements OnInit {
   ngOnInit() {
     this.profissionalForm = this.formBuilder.group({
       'nome_profissional': [null, Validators.required],
-      'endereco_profissional': [null, [Validators.required, Validators.minLength(100)]],
+      'endereco_profissional': [null, [Validators.required]],
       'telefone_profissional': [null, Validators.required]
     });
 

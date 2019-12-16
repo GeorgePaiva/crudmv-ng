@@ -17,7 +17,7 @@ export class EstabelecimentoNovoComponent implements OnInit {
   ngOnInit() {
     this.estabelecimentoForm = this.formBuilder.group({
       'nome_estabelecimento': [null, Validators.required],
-      'endereco_estabelecimento': [null, [Validators.required, Validators.minLength(100)]],
+      'endereco_estabelecimento': [null, [Validators.required]],
       'telefone_estabelecimento': [null, Validators.required]
     });
 
