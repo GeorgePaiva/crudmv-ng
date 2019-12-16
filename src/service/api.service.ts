@@ -8,7 +8,8 @@ import { Estabelecimento } from 'src/model/estabelecimento';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const apiUrl = 'http://localhost:8080/api/testemv';
+const apiUrl = 'http://localhost:8080/profissionais';
+
 
 @Injectable({
   providedIn: 'root'

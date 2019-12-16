@@ -26,6 +26,8 @@ import {
   MatToolbarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ProfissionalListComponent } from './profissional-list/profissional-list.component';
+import { EstabelecimentoListComponent } from './estabelecimento-list/estabelecimento-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     EstabelecimentoDetalheComponent,
     EstabelecimentoNovoComponent,
     EstabelecimentoEditarComponent,
-    MenuComponent
+    MenuComponent,
+    ProfissionalListComponent,
+    EstabelecimentoListComponent
   ],
   imports: [
     BrowserModule,

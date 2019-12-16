@@ -12,5 +12,5 @@
         <input matInput name="telefone_profissional" placeholder="Telefone do Profissional" formControlName="telefone_profissional">
     </mat-form-field>
 
-    <button type="submit" [disabled]="!profissionalForm.valid" mat-button color="primary">Adicionar</button>
+    <button type="submit" class="button" mat-button (click)="addEstabelecimento()">Adicionar<mat-icon>add_circle</mat-icon></button>
 </form>

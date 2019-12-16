@@ -12,5 +12,5 @@
         <input matInput name="telefone_estabelecimento" placeholder="Telefone do Estabelecimento" formControlName="telefone_estabelecimento">
     </mat-form-field>
 
-    <button type="submit" [disabled]="!estabelecimentoForm.valid" mat-button color="primary">Adicionar</button>
+    <button type="submit" class="button" mat-button (click)="addEstabelecimento()">Adicionar<mat-icon>add_circle</mat-icon></button>
 </form>
