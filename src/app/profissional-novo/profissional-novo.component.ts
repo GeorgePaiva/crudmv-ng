@@ -30,7 +30,7 @@ export class ProfissionalNovoComponent implements OnInit {
       .subscribe(res => {
         const id = res['_id'];
         this.isLoadingResults = false;
-        this.router.navigate(['/profissional-detalhe', id]);
+        this.router.navigate(['/profissional-novo', id]);
       }, (err) => {
         console.log(err);
         this.isLoadingResults = false;

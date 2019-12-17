@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Estabelecimento } from 'src/model/estabelecimento';
 import { ApiEstabelecimento } from 'src/service/estabelecimento.service';
 
+
 @Component({
   selector: 'app-estabelecimento',
   templateUrl: './estabelecimento.component.html',

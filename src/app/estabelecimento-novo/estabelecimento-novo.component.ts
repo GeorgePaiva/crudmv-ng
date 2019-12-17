@@ -29,7 +29,7 @@ export class EstabelecimentoNovoComponent implements OnInit {
       .subscribe(res => {
         const id = res['_id'];
         this.isLoadingResults = false;
-        this.router.navigate(['/estabelecimento-detalhe', id]);
+        this.router.navigate(['/estabelecimento-novo', id]);
       }, (err) => {
         console.log(err);
         this.isLoadingResults = false;
