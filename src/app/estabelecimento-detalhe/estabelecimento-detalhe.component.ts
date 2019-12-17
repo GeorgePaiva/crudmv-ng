@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/service/api.service';
+import { ApiEstabelecimento } from 'src/service/estabelecimento.service';
 import { Estabelecimento } from 'src/model/estabelecimento';
 
 @Component({
@@ -19,7 +19,7 @@ export class EstabelecimentoDetalheComponent implements OnInit {
   };
   isLoadingResults = true;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _apiEst: ApiEstabelecimento) { }
 
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class EstabelecimentoDetalheComponent implements OnInit {
   }
 
   getEstabelecimento(id) {
-    this.api.getEstabelecimento(id)
+    this._apiEst.getEstabelecimento(id)
       .subscribe(data => {
         this.estabelecimento = data;
         console.log(this.estabelecimento);
@@ -37,7 +37,7 @@ export class EstabelecimentoDetalheComponent implements OnInit {
 
   deleteEstabelecimento(id) {
     this.isLoadingResults = true;
-    this.api.deleteEstabelecimento(id)
+    this._apiEst.deleteEstabelecimento(id)
       .subscribe(res => {
         this.isLoadingResults = false;
         this.router.navigate(['/estabelecimento']);

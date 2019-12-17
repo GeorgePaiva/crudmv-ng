@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, NgForm, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/service/api.service';
+import { ApiEstabelecimento } from 'src/service/estabelecimento.service';
 
 @Component({
   selector: 'app-estabelecimento-editar',
@@ -16,7 +16,7 @@ export class EstabelecimentoEditarComponent implements OnInit {
   endereco_estabelecimento: String = '';
   telefone_estabelecimento: number = null;
   isLoadingResults = false;
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _apiEst: ApiEstabelecimento, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getEstabelecimento(this.route.snapshot.params['id']);
@@ -28,7 +28,7 @@ export class EstabelecimentoEditarComponent implements OnInit {
   }
 
   getEstabelecimento(id) {
-    this.api.getEstabelecimento(id).subscribe(data => {
+    this._apiEst.getEstabelecimento(id).subscribe(data => {
       this._id = data._id;
       this.estabelecimentoForm.setValue({
         nome_estabelecimento: data.nome_estabelecimento,
@@ -40,7 +40,7 @@ export class EstabelecimentoEditarComponent implements OnInit {
 
   updateEstabelecimento(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateEstabelecimento(this._id, form)
+    this._apiEst.updateEstabelecimento(this._id, form)
       .subscribe(res => {
         this.isLoadingResults = false;
         this.router.navigate(['/estabelecimento-detalhe/' + this._id]);

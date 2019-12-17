@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ApiService } from 'src/service/api.service';
+import { ApiProf } from 'src/service/profissional.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class ProfissionalNovoComponent implements OnInit {
 
   profissionalForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private _apiProf: ApiProf, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.profissionalForm = this.formBuilder.group({
@@ -26,7 +26,7 @@ export class ProfissionalNovoComponent implements OnInit {
 
   addProfissional(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.addProfissional(form)
+    this._apiProf.addProfissional(form)
       .subscribe(res => {
         const id = res['_id'];
         this.isLoadingResults = false;

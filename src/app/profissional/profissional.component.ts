@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../service/api.service';
+import { ApiProf } from '../../service/profissional.service';
 import { Profissional } from 'src/model/profissional';
 
 @Component({
@@ -13,10 +13,10 @@ export class ProfissionalComponent implements OnInit {
   dataSource: Profissional[];
   isLoadingResults: boolean;
 
-  constructor(private _api: ApiService) { }
+  constructor(private _apiProf: ApiProf) { }
 
   ngOnInit() {
-    this._api.getProfissionais()
+    this._apiProf.getProfissionais()
     .subscribe(res => {
       this.dataSource = res;
       console.log(this.dataSource);

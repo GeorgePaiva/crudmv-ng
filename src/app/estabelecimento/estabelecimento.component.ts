@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Estabelecimento } from 'src/model/estabelecimento';
-import { ApiService } from 'src/service/api.service';
+import { ApiEstabelecimento } from 'src/service/estabelecimento.service';
 
 @Component({
   selector: 'app-estabelecimento',
@@ -13,10 +13,10 @@ export class EstabelecimentoComponent implements OnInit {
   dataSource: Estabelecimento[];
   isLoadingResults: boolean;
 
-  constructor(private _api: ApiService) { }
+  constructor(private _apiEst: ApiEstabelecimento) { }
 
   ngOnInit() {
-    this._api.getEstabelecimentos()
+    this._apiEst.getEstabelecimentos()
       .subscribe(res => {
         this.dataSource = res;
         console.log(this.dataSource);

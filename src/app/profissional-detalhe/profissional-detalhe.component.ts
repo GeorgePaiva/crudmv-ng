@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/service/api.service';
+import { ApiProf } from 'src/service/profissional.service';
 import { Profissional } from 'src/model/profissional';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profissional-detalhe',
@@ -20,7 +19,7 @@ export class ProfissionalDetalheComponent implements OnInit {
   };
   isLoadingResults = true;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _apiProf: ApiProf) { }
 
 
   ngOnInit() {
@@ -28,7 +27,7 @@ export class ProfissionalDetalheComponent implements OnInit {
   }
 
   getProfissional(id) {
-    this.api.getProfissional(id)
+    this._apiProf.getProfissional(id)
       .subscribe(data => {
         this.profissional = data;
         console.log(this.profissional);
@@ -38,7 +37,7 @@ export class ProfissionalDetalheComponent implements OnInit {
 
   deleteProfissional(id) {
     this.isLoadingResults = true;
-    this.api.deleteProfissional(id)
+    this._apiProf.deleteProfissional(id)
       .subscribe(res => {
         this.isLoadingResults = false;
         this.router.navigate(['/profissional']);

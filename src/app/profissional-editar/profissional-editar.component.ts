@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ApiService } from 'src/service/api.service';
+import { ApiProf } from 'src/service/profissional.service';
 
 @Component({
   selector: 'app-profissional-editar',
@@ -15,7 +15,7 @@ export class ProfissionalEditarComponent implements OnInit {
   endereco_profissional: String = '';
   telefone_profissional: number = null;
   isLoadingResults = false;
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _apiProf: ApiProf, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getProfissional(this.route.snapshot.params['id']);
@@ -27,7 +27,7 @@ export class ProfissionalEditarComponent implements OnInit {
   }
 
   getProfissional(id) {
-    this.api.getProfissional(id).subscribe(data => {
+    this._apiProf.getProfissional(id).subscribe(data => {
       this._id = data._id;
       this.profissionalForm.setValue({
         nome_profissional: data.nome_profissional,
@@ -39,7 +39,7 @@ export class ProfissionalEditarComponent implements OnInit {
 
   updateProfissional(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateProfissional(this._id, form)
+    this._apiProf.updateProfissional(this._id, form)
       .subscribe(res => {
         this.isLoadingResults = false;
         this.router.navigate(['/profissional-detalhe/' + this._id]);

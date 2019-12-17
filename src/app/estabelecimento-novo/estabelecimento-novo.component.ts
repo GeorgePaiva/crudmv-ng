@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/service/api.service';
+import { ApiEstabelecimento } from 'src/service/estabelecimento.service';
 
 @Component({
   selector: 'app-estabelecimento-novo',
@@ -12,7 +12,7 @@ export class EstabelecimentoNovoComponent implements OnInit {
 
   estabelecimentoForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private _apiEst: ApiEstabelecimento, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.estabelecimentoForm = this.formBuilder.group({
@@ -25,7 +25,7 @@ export class EstabelecimentoNovoComponent implements OnInit {
 
   addEstabelecimento(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.addEstabelecimento(form)
+    this._apiEst.addEstabelecimento(form)
       .subscribe(res => {
         const id = res['_id'];
         this.isLoadingResults = false;
